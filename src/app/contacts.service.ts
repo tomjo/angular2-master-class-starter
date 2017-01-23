@@ -10,4 +10,8 @@ export class ContactsService {
   getContacts(): Contact[] {
     return CONTACT_DATA;
   }
+
+  getContact(id: string): Contact {
+    return this.getContacts().find(contact => contact.id.toString() === id);
+  }
 }

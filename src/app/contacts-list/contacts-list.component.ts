@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from "../models/contact";
 import {ContactsService} from "../contacts.service";
 
@@ -14,11 +14,11 @@ export class ContactsListComponent implements OnInit {
   constructor(private contactsService: ContactsService) {
   }
 
-  trackByContactId(index: number, contact: any): number {
-    return contact.id;
-  }
-
   ngOnInit(): void {
     this.contacts = this.contactsService.getContacts();
+  }
+
+  trackByContactId(index: number, contact: any): number {
+    return contact.id;
   }
 }
