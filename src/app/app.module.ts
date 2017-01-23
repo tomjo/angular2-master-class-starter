@@ -4,10 +4,13 @@ import {MaterialModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ContactsAppComponent} from "./contacts.component";
 import {ContactsService} from "./contacts.service";
-import { ContactsListComponent } from './contacts-list/contacts-list.component';
+import {ContactsListComponent} from './contacts-list/contacts-list.component';
 import {RouterModule} from "@angular/router";
 import {APP_ROUTES} from "./app.routes";
-import { ContactsDetailComponent } from './contacts-detail/contacts-detail.component';
+import {ContactsDetailComponent} from './contacts-detail/contacts-detail.component';
+import {HttpModule} from "@angular/http";
+import {environment} from "./environment";
+import {API_ENDPOINT} from "./tokens";
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent],
@@ -15,9 +18,16 @@ import { ContactsDetailComponent } from './contacts-detail/contacts-detail.compo
     BrowserModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    HttpModule
   ],
-  providers: [ContactsService],
+  providers: [
+    ContactsService,
+    {
+      provide: API_ENDPOINT,
+      useValue: environment.apiEndpoint
+    }
+  ],
   bootstrap: [ContactsAppComponent]
 })
 export class ContactsModule {
