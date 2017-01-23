@@ -20,4 +20,8 @@ export class ContactsService{
       .map(res => res.json())
       .map(data => data.item);
   }
+
+  updateContact(contact: Contact): Observable<any>{
+    return this.http.put(`${this.apiEndpoint}/contacts/${contact.id}`, contact);
+  }
 }
