@@ -17,17 +17,13 @@ export class ContactsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contacts = this.contactsService.getContacts();
-    this.terms$.debounceTime(400)
+    this.contacts = this.terms$.debounceTime(400)
       .distinctUntilChanged()
-      .subscribe(term => this.search(term));
+      .switchMap(term => this.contactsService.search(term))
+      .merge(this.contactsService.getContacts());
   }
 
   trackByContactId(index: number, contact: any): number {
     return contact.id;
-  }
-
-  search(term: string): void{
-    this.contacts = this.contactsService.search(term);
   }
 }
