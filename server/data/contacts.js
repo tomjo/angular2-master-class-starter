@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 0,
     name: 'Roger "Fair Winds" Pimples',
-    email: '',
+    email: 'rumlover@pirate.com',
     phone: '',
     birthday: '',
     website: '',
@@ -17,7 +17,7 @@ module.exports = [
   {
     id: 1,
     name: 'Eli "Parrot Charmer" Pimples',
-    email: '',
+    email: 'rumlover@pirate.com',
     phone: '',
     birthday: '',
     website: '',
@@ -32,7 +32,7 @@ module.exports = [
   {
     id: 2,
     name: 'Johnny "Handsome Sailor" Grills',
-    email: '',
+    email: 'rumlover@pirate.com',
     phone: '',
     birthday: '',
     website: '',
@@ -47,7 +47,7 @@ module.exports = [
   {
     id: 3,
     name: 'Johnny "Thieving Magpie" Scoby',
-    email: '',
+    email: 'rumlover@pirate.com',
     phone: '',
     birthday: '',
     website: '',
