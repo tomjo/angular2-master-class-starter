@@ -17,8 +17,7 @@ export class ContactsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contacts = this.contactsService.search(this.terms$)
-      .merge(this.contactsService.getContacts());
+    this.contacts = Observable.concat( this.contactsService.getContacts(), this.contactsService.search(this.terms$));
   }
 
   trackByContactId(index: number, contact: Contact): number {
