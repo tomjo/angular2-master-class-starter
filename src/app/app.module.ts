@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detail-view.component";
 import {TabsComponent} from "./tabs/tabs.component";
 import {TabComponent} from "./tabs/tab/tab.component";
+import {EventBusService} from "./event-bus.service";
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent],
@@ -32,7 +33,8 @@ import {TabComponent} from "./tabs/tab/tab.component";
     {
       provide: API_ENDPOINT,
       useValue: environment.apiEndpoint
-    }
+    },
+    EventBusService
   ],
   bootstrap: [ContactsAppComponent]
 })
