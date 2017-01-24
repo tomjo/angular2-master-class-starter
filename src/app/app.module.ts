@@ -13,9 +13,10 @@ import {environment} from "./environment";
 import {API_ENDPOINT} from "./tokens";
 import {ContactsEditorComponent} from "./contacts-editor/contacts-editor.component";
 import {FormsModule} from "@angular/forms";
+import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detail-view.component";
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent],
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
