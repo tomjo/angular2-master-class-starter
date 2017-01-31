@@ -25,6 +25,10 @@ export class ContactsService {
     return this.http.put(`${this.apiEndpoint}/contacts/${contact.id}`, contact);
   }
 
+  addContact(contact: Contact): Observable<any> {
+    return this.http.post(`${this.apiEndpoint}/contacts`, contact);
+  }
+
   search(terms: Observable<string>, debounceMs = 400): Observable<Contact[]> {
     return terms.debounceTime(debounceMs)
       .distinctUntilChanged()
