@@ -12,7 +12,7 @@ import {HttpModule} from "@angular/http";
 import {environment} from "./environment";
 import {API_ENDPOINT} from "./tokens";
 import {ContactsEditorComponent} from "./contacts-editor/contacts-editor.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detail-view.component";
 import {TabsComponent} from "./tabs/tabs.component";
 import {TabComponent} from "./tabs/tab/tab.component";
@@ -29,7 +29,8 @@ import {EmailAvailabilityValidatorDirective} from "./email-availability-validato
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES),
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ContactsService,

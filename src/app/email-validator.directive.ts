@@ -1,7 +1,7 @@
 import {Directive} from "@angular/core";
 import {FormControl, NG_VALIDATORS} from "@angular/forms";
 
-function validateEmail(c: FormControl) {
+export function validateEmail(c: FormControl) {
   const VALID_EMAIL = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
   return VALID_EMAIL.test(c.value)
     ? null
