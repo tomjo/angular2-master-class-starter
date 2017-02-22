@@ -8,7 +8,7 @@
       </md-card-title-group>
       <md-card-content>
         <div fxLayout="column">
-          <md-input-container fxFlex dividerColor="name.errors ? 'warn' : 'primary'">
+          <md-input-container fxFlex [dividerColor]="name.errors ? 'warn' : 'primary'">
             <input md-input placeholder="Name" #name="ngModel" name="name" ngModel required minlength="3">
             <md-hint align="end" *ngIf="!name.valid && !name.pristine">
               <p *ngIf="name.errors.minlength">
@@ -19,8 +19,13 @@
               </p>
             </md-hint>
           </md-input-container>
-          <md-input-container fxFlex>
-            <input md-input placeholder="Email" name="email" ngModel>
+          <md-input-container fxFlex [dividerColor]="email.errors ? 'warn' : 'primary'">
+            <input md-input placeholder="Email" name="email" ngModel #email="ngModel" trmEmailValidator>
+            <md-hint align="end" *ngIf="!email.valid && !email.pristine">
+              <p *ngIf="!email.errors?.validEmail">
+                Please enter a valid email adress.
+              </p>
+            </md-hint>
           </md-input-container>
           <md-input-container fxFlex>
             <input md-input placeholder="Birthday" name="birthday" type="date" ngModel>

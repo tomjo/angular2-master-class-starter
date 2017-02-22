@@ -18,9 +18,10 @@ import {TabsComponent} from "./tabs/tabs.component";
 import {TabComponent} from "./tabs/tab/tab.component";
 import {EventBusService} from "./event-bus.service";
 import {ContactsCreatorComponent} from "./contacts-creator/contacts-creator.component";
+import {EmailValidatorDirective} from "./email-validator.directive";
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent, EmailValidatorDirective],
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
