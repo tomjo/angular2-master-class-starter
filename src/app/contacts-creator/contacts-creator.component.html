@@ -20,10 +20,13 @@
             </md-hint>
           </md-input-container>
           <md-input-container fxFlex [dividerColor]="email.errors ? 'warn' : 'primary'">
-            <input md-input placeholder="Email" name="email" ngModel #email="ngModel" trmEmailValidator>
+            <input md-input placeholder="Email" name="email" ngModel #email="ngModel" trmCheckEmailAvailability>
             <md-hint align="end" *ngIf="!email.valid && !email.pristine">
-              <p *ngIf="!email.errors?.validEmail">
+              <p *ngIf="!email.errors?.validEmail && !email.errors?.emailTaken">
                 Please enter a valid email adress.
+              </p>
+              <p *ngIf="email.errors?.emailTaken">
+                This email address has been taken.
               </p>
             </md-hint>
           </md-input-container>

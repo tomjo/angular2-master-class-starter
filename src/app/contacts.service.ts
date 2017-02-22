@@ -36,7 +36,15 @@ export class ContactsService {
       .switch(); //unsubscribe from previous observables
   }
 
-  private rawSearch(term: string): Observable<Contact[]> {
+  isEmailAvailable(email: string): Observable<any> {
+    return this.http.get(`${this.apiEndpoint}/check-email?email=${email}`)
+      .map(res => res.json())
+      .map(res => res.error
+        ? { emailTaken: true}
+        : null);
+  }
+
+private rawSearch(term: string): Observable<Contact[]> {
     return this.http.get(`${this.apiEndpoint}/search?text=${term}`)
       .map(res => res.json())
       .map(data => data.items);
