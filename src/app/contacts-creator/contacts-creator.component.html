@@ -3,18 +3,18 @@
     <md-card>
       <md-card-title-group>
         <img md-card-md-image alt="Placeholder image" src="/assets/images/placeholder.png">
-        <md-card-title></md-card-title>
-        <md-card-subtitle></md-card-subtitle>
+        <md-card-title>{{formGroup.get('name').value}}</md-card-title>
+        <md-card-subtitle>{{formGroup.get('name').email}}</md-card-subtitle>
       </md-card-title-group>
       <md-card-content>
         <div fxLayout="column">
           <md-input-container fxFlex [dividerColor]="formGroup.get('name').errors ? 'warn' : 'primary'">
             <input md-input placeholder="Name" formControlName="name">
             <md-hint align="end" *ngIf="!formGroup.get('name').valid && !formGroup.get('name').pristine">
-              <p *ngIf="formGroup.get('name').errors.minlength">
+              <p *ngIf="formGroup.get('name').errors?.minlength">
                 The name field requires a minimum length of {{formGroup.get('name').errors.minlength.requiredLength}} characters but was {{formGroup.get('name').errors.minlength.actualLength}}.
               </p>
-              <p *ngIf="formGroup.get('name').errors.required">
+              <p *ngIf="formGroup.get('name').errors?.required">
                 The name field is a required field.
               </p>
             </md-hint>

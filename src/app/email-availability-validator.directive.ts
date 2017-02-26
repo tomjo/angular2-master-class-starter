@@ -15,7 +15,7 @@ export function checkEmailAvailability(contactsService: ContactsService) {
     }
   ]
 })
-export class EmailAvailabilityValidatorDirective {
+export class EmailAvailabilityValidatorDirective{
   private validator: Function;
 
   constructor(contactsService: ContactsService) {
