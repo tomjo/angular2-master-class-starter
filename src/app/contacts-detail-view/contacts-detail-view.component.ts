@@ -11,26 +11,28 @@ import {EventBusService} from "../event-bus.service";
 })
 export class ContactsDetailViewComponent implements OnInit {
 
-  contact : Contact;
+  contact: Contact;
 
-  constructor(private contactsService : ContactsService,
-              private activatedRoute : ActivatedRoute,
-              private router : Router,
-              private eventBus: EventBusService) { }
-
-  ngOnInit() {
-    let id = this.activatedRoute.snapshot.params['id'];
-    this.contactsService.getContact(id).subscribe(contact => {
-      this.contact = contact;
-      this.eventBus.emit('appTitleChange', `Detail: ${this.contact.name}`);
-    });
+  constructor(private contactsService: ContactsService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private eventBus: EventBusService) {
   }
 
-  navigateToEditor(contact: Contact){
+  ngOnInit() {
+    this.activatedRoute.params
+      .switchMap(params => this.contactsService.getContact(params['id']))
+      .subscribe(contact => {
+        this.contact = contact;
+        this.eventBus.emit('appTitleChange', `Detail: ${this.contact.name}`);
+      });
+  }
+
+  navigateToEditor(contact: Contact) {
     this.router.navigate(['edit'], {relativeTo: this.activatedRoute});
   }
 
-  navigateToList(){
+  navigateToList() {
     this.router.navigate(['/']);
   }
 }
