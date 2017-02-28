@@ -4,5 +4,8 @@
   </md-sidenav>
   <div class="main-content">
     <router-outlet></router-outlet>
+    <a md-fab title="Add a new contact" class="trm-floating-button" [routerLink]="['/contacts/new']">
+      <md-icon class="md-24">add</md-icon>
+    </a>
   </div>
 </md-sidenav-container>

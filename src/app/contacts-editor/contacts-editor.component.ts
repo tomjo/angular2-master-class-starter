@@ -23,11 +23,12 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.activatedRoute.snapshot.params['id'];
-    this.contactsService.getContact(id).subscribe(contact => {
-      this.contact = contact;
-      this.eventBus.emit('appTitleChange', `Edit: ${this.contact.name}`);
-    });
+    this.activatedRoute.params
+      .switchMap(params => this.contactsService.getContact(params['id']))
+      .subscribe(contact => {
+        this.contact = contact;
+        this.eventBus.emit('appTitleChange', `Edit: ${this.contact.name}`);
+      });
   }
 
   save(contact: Contact): void {
