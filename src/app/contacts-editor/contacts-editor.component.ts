@@ -15,17 +15,16 @@ export class ContactsEditorComponent implements OnInit {
   private contact: Contact;
   public saving: boolean = false;
 
-  constructor(private contactsService: ContactsService,
-              private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
+              private contactsService: ContactsService,
               private snackbar: MdSnackBar,
               private eventBus : EventBusService) {
-    this.contact = {address: {}} as Contact;
   }
 
   ngOnInit() {
-    this.activatedRoute.params
-      .switchMap(params => this.contactsService.getContact(params['id']))
+    this.activatedRoute.data
+      .map(data => data['contact'])
       .subscribe(contact => {
         this.contact = contact;
         this.eventBus.emit('appTitleChange', `Edit: ${this.contact.name}`);

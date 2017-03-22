@@ -21,9 +21,9 @@ import {ContactsCreatorComponent} from "./contacts-creator/contacts-creator.comp
 import {EmailValidatorDirective} from "./email-validator.directive";
 import {EmailAvailabilityValidatorDirective} from "./email-availability-validator.directive";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
-import {AboutComponent} from "./about/about.component";
 import {ConfirmDeactivationDialogComponent} from "./confirm-deactivation-dialog/confirm-deactivation-dialog.component";
 import {CanDeactivateContactsEditorGuard} from "./guards/candeactivatecontactseditorguard";
+import {ContactsResolver} from "./shared/contacts.resolver";
 
 export function confirmNavigationGuard(component: ContactsEditorComponent){
   if (component.saving) {
@@ -33,7 +33,7 @@ export function confirmNavigationGuard(component: ContactsEditorComponent){
 }
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent, EmailValidatorDirective, EmailAvailabilityValidatorDirective, ContactsDashboardComponent, AboutComponent, ConfirmDeactivationDialogComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent, EmailValidatorDirective, EmailAvailabilityValidatorDirective, ContactsDashboardComponent, ConfirmDeactivationDialogComponent],
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
@@ -54,7 +54,8 @@ export function confirmNavigationGuard(component: ContactsEditorComponent){
       provide: API_ENDPOINT,
       useValue: environment.apiEndpoint
     },
-    EventBusService
+    EventBusService,
+    ContactsResolver
 ],
   bootstrap: [ContactsAppComponent],
   entryComponents: [ConfirmDeactivationDialogComponent]
