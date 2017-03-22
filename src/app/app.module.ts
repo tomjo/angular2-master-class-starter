@@ -22,28 +22,44 @@ import {EmailValidatorDirective} from "./email-validator.directive";
 import {EmailAvailabilityValidatorDirective} from "./email-availability-validator.directive";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
 import {AboutComponent} from "./about/about.component";
+import {ConfirmDeactivationDialogComponent} from "./confirm-deactivation-dialog/confirm-deactivation-dialog.component";
+import {CanDeactivateContactsEditorGuard} from "./guards/candeactivatecontactseditorguard";
+
+export function confirmNavigationGuard(component: ContactsEditorComponent){
+  if (component.saving) {
+    return true;
+  }
+  return window.confirm('Navigate away without saving?');
+}
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent, EmailValidatorDirective, EmailAvailabilityValidatorDirective, ContactsDashboardComponent, AboutComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, TabsComponent, TabComponent, ContactsCreatorComponent, EmailValidatorDirective, EmailAvailabilityValidatorDirective, ContactsDashboardComponent, AboutComponent, ConfirmDeactivationDialogComponent],
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES),
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  HttpModule,
+  FormsModule,
+  ReactiveFormsModule
+],
   providers: [
+{
+      provide: 'ConfirmNavigationGuard',
+      useValue: confirmNavigationGuard
+    },
+    CanDeactivateContactsEditorGuard,
     ContactsService,
     {
       provide: API_ENDPOINT,
       useValue: environment.apiEndpoint
     },
     EventBusService
-  ],
-  bootstrap: [ContactsAppComponent]
+],
+  bootstrap: [ContactsAppComponent],
+  entryComponents: [ConfirmDeactivationDialogComponent]
 })
 export class ContactsModule {
 
 }
+

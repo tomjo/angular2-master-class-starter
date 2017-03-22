@@ -4,13 +4,14 @@ import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detai
 import {ContactsCreatorComponent} from "./contacts-creator/contacts-creator.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
+import {CanDeactivateContactsEditorGuard} from "./guards/candeactivatecontactseditorguard";
 
 export const APP_ROUTES = [
   {path: '', component: ContactsDashboardComponent, children: [
     {path: '', pathMatch: 'full', redirectTo: 'contacts/0'},
     {path: 'contacts/new', component: ContactsCreatorComponent},
     {path: 'contacts/:id', component: ContactsDetailViewComponent},
-    {path: 'contacts/:id/edit', component: ContactsEditorComponent},
+    {path: 'contacts/:id/edit', component: ContactsEditorComponent, canDeactivate: ['ConfirmNavigationGuard', CanDeactivateContactsEditorGuard]},
     {path: 'contacts', component: ContactsListComponent}
   ]},
     {path: 'about', component: AboutComponent},
