@@ -17,6 +17,7 @@ export class ContactsDetailViewComponent implements OnInit {
               private eventBus: EventBusService) {
   }
 
+  //route.data is een observable want resolver pusht nieuwe contact in de observable wanneer we op een ander contact klikken anders zou component reuse niet werken
   ngOnInit() {
     this.activatedRoute.data
       .map(data => data['contact'])
