@@ -25,7 +25,7 @@ import {ConfirmDeactivationDialogComponent} from "./confirm-deactivation-dialog/
 import {CanDeactivateContactsEditorGuard} from "./guards/candeactivatecontactseditorguard";
 import {ContactsResolver} from "./shared/contacts.resolver";
 
-export function confirmNavigationGuard(component: ContactsEditorComponent){
+export function confirmNavigationGuard(component: ContactsEditorComponent) {
   if (component.saving) {
     return true;
   }
@@ -39,12 +39,12 @@ export function confirmNavigationGuard(component: ContactsEditorComponent){
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES),
-  HttpModule,
-  FormsModule,
-  ReactiveFormsModule
-],
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [
-{
+    {
       provide: 'ConfirmNavigationGuard',
       useValue: confirmNavigationGuard
     },
@@ -56,7 +56,7 @@ export function confirmNavigationGuard(component: ContactsEditorComponent){
     },
     EventBusService,
     ContactsResolver
-],
+  ],
   bootstrap: [ContactsAppComponent],
   entryComponents: [ConfirmDeactivationDialogComponent]
 })
